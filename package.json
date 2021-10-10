@@ -1,0 +1,23 @@
+{
+  "name": "ib-client",
+  "version": "0.1.0",
+  "engines": {
+    "node": "^14"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "generate:raw": "openapi-generator-cli generate -i ./openapi.json -g typescript-axios -o ./lib -c ./openapi-generator.config.json --skip-validate-spec --additional-properties=supportsES6=true --additional-properties=typescriptThreePlus=true",
+    "generate:prettier": "prettier --write ./lib",
+    "generate:tsnocheck": "sed -i '' 's|^\\/\\* tslint:disable \\*\\/|\\/\\/ @ts-ignore|g' lib/*.ts",
+    "generate": "run-s generate:raw generate:prettier generate:tsnocheck",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.4.12",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.4.0",
+    "typescript": "^4.4.3"
+  },
+  "files": ["/dist"]
+}
