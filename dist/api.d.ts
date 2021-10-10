@@ -770,12 +770,6 @@ export interface Contract {
      * @type {string}
      * @memberof Contract
      */
-    companyName?: string;
-    /**
-     *
-     * @type {string}
-     * @memberof Contract
-     */
     category?: string;
     /**
      *
